@@ -3,19 +3,19 @@ package list
 import "fmt"
 
 type List struct {
-	Root *Node
+	Root *node
 }
 
-type Node struct {
+type node struct {
 	Value int
-	Next  *Node
+	Next  *node
 }
 
-func (l *List) add(val int) {
-	l.addNode(&Node{val, nil})
+func (l *List) Add(val int) {
+	l.addNode(&node{val, nil})
 }
 
-func (l *List) addNode(n *Node) {
+func (l *List) addNode(n *node) {
 	if l.Root == nil {
 		l.Root = n
 		return
@@ -27,21 +27,21 @@ func (l *List) addNode(n *Node) {
 	tmp.Next = n
 }
 
-func (l *List) insert(val int, pos int) {
+func (l *List) Insert(val int, pos int) {
 	tmp := l.Root
 	if tmp == nil || pos == 0 {
-		l.Root = &Node{val, tmp}
+		l.Root = &node{val, tmp}
 		return
 	}
 
 	for i := 0; i < pos-1 && tmp.Next != nil; i++ {
 		tmp = tmp.Next
 	}
-	newNode := &Node{val, tmp.Next}
+	newNode := &node{val, tmp.Next}
 	tmp.Next = newNode
 }
 
-func (l *List) delete(pos int) {
+func (l *List) Delete(pos int) {
 	tmp := l.Root
 	if pos == 0 && tmp != nil {
 		l.Root = tmp.Next
@@ -54,7 +54,8 @@ func (l *List) delete(pos int) {
 	}
 }
 
-func (l *List) print() {
+func (l *List) Print() {
+  fmt.Println("Printing List")
 	tmp := l.Root
 	for tmp != nil {
 		fmt.Println(tmp.Value)
