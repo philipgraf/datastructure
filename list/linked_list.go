@@ -55,10 +55,14 @@ func (l *List) Delete(pos int) {
 }
 
 func (l *List) Print() {
-  fmt.Println("Printing List")
+	fmt.Println("Printing List")
 	tmp := l.Root
 	for tmp != nil {
 		fmt.Println(tmp.Value)
 		tmp = tmp.Next
 	}
+}
+
+func (l *List) Get(pos int) int {
+
 }
